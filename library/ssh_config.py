@@ -790,7 +790,10 @@ def main():
         # MAKE sure the file is owned by the right user
         module.set_owner_if_different(config_file, user, False)
         module.set_group_if_different(config_file, user, False)
-        module.set_mode_if_different(config_file, '0600', False)
+        perm_mode = '0600'
+        if config_file is '/etc/ssh/ssh_config':
+            perm_mode = '0644'
+        module.set_mode_if_different(config_file, perm_mode, False)
 
     module.exit_json(changed=config_changed,
                      hosts_changed=hosts_changed,
