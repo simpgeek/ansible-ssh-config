@@ -730,7 +730,7 @@ def main():
     hosts_removed = []
     hosts_added = []
 
-    if user is None:
+    if user is None or user == "root":
         config_file = '/etc/ssh/ssh_config'
         user = 'root'
     else:
