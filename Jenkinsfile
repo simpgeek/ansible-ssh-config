@@ -4,16 +4,12 @@ node {
   try {
     def steps = [:]
     steps['test'] = {
-      stage('Test'){
         checkout scm
         echo 'test'
-      }
     }
     steps['build'] = {
-      stage('Build Image'){
         echo "building from branch ${env.BRANCH_NAME}"
         exit 1
-      }
     }
     parallel steps
      
