@@ -2,15 +2,14 @@
 
 node {
   try {
-    def steps = [:]
-    steps['test'] = {
+    def steps = ['test': {
         checkout scm
         echo 'test'
-    }
-    steps['build'] = {
+    },
+    'build': {
         echo "building from branch ${env.BRANCH_NAME}"
         exit 1
-    }
+    }]
     parallel steps
      
     stage('after'){   
