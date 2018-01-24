@@ -2,15 +2,20 @@
 
 node {
   try {
-    parallel [
-      test: stage('Test'){
+    def steps = [:]
+    steps['test'] = {
+      stage('Test'){
         checkout scm
         echo 'test'
-      },
-      build: stage('Build Image'){
+      }
+    }
+    steps['build'] = {
+      stage('Build Image'){
         echo "building from branch ${env.BRANCH_NAME}"
       }
-    ]
+    }
+    parallel steps
+     
     stage('after'){   
       archiveArtifacts(artifacts: 'auto/*', excludes: "auto/.gitkeep")
       echo 'after'
