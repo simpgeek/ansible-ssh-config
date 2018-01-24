@@ -8,7 +8,6 @@ node {
     },
     'build': {
         echo "building from branch ${env.BRANCH_NAME}"
-        exit 1
     }]
     parallel steps
      
