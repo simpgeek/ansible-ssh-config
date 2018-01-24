@@ -11,7 +11,7 @@ stage('Build Image'){
     
       stage('after'){
         
-  archiveArtifacts(artifacts: 'auto/*', excludes: '\.gitkeep')
+  archiveArtifacts(artifacts: 'auto/*', excludes: "\.gitkeep")
         echo 'after'
       }
     
