@@ -1,26 +1,24 @@
-pipeline {
-  agent any
-  stages {
-    stage('test') {
-      parallel {
-        stage('test') {
-          steps {
-            sh '''echo \'test\'
-ls -al'''
-          }
-        }
-        stage('build') {
-          steps {
-            sh '''echo \'build\'
-ls -al .'''
-          }
-        }
+#!/usr/bin/env groovy
+
+node {
+  try {
+
+
+    parallel {
+
+      stage('Test'){
+        echo 'test'
+      }
+
+      stage('Build Image'){
+        echo "building from branch ${env.BRANCH_NAME}"
+
       }
     }
-    stage('deploy') {
-      steps {
-        echo 'deploy'
-      }
-    }
+
+  } catch (err) {
+    echo 'alert error in build'
+    archiveArtifacts(artifacts: 'automation/artifacts/*', excludes: '.gitkeep')
+    throw err
   }
 }
