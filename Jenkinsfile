@@ -5,12 +5,14 @@ pipeline {
       parallel {
         stage('test') {
           steps {
-            sh 'echo \'test\''
+            sh '''echo \'test\'
+ls -al'''
           }
         }
         stage('build') {
           steps {
-            sh 'echo \'build\''
+            sh '''echo \'build\'
+ls -al .'''
           }
         }
       }
