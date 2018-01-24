@@ -2,18 +2,16 @@
 
 node {
   try {
-
-      parallel {
-
-        'test': stage('Test'){
+    stage('Test'){
           echo 'test'
         }
-
-        'build': stage('Build Image'){
+stage('Build Image'){
           echo "building from branch ${env.BRANCH_NAME}"
         }
-      }
+    
       stage('after'){
+        
+  archiveArtifacts(artifacts: 'auto/*', excludes: '\.gitkeep')
         echo 'after'
       }
     
