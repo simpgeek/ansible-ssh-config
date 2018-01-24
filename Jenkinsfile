@@ -4,7 +4,7 @@ node {
   try {
 
     steps{
-      parallel {
+      parallel('test build'){
 
         stage('Test'){
           echo 'test'
