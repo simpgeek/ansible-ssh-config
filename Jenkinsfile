@@ -5,11 +5,11 @@ node {
 
       parallel {
 
-        stage('Test'){
+        'test': stage('Test'){
           echo 'test'
         }
 
-        stage('Build Image'){
+        'build': stage('Build Image'){
           echo "building from branch ${env.BRANCH_NAME}"
         }
       }
