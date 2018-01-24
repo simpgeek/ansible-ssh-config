@@ -3,6 +3,7 @@
 node {
   try {
     stage('Test'){
+      checkout scm
           echo 'test'
         }
 stage('Build Image'){
