@@ -3,7 +3,7 @@
 node {
   try {
 
-    steps{
+    steps('dunno'){
       parallel('test build'){
 
         stage('Test'){
