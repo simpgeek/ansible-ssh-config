@@ -3,7 +3,6 @@
 node {
   try {
 
-    steps('dunno'){
       parallel('test build'){
 
         stage('Test'){
@@ -17,7 +16,7 @@ node {
       stage('after'){
         echo 'after'
       }
-    }
+    
 
   } catch (err) {
   echo 'alert error in build'
