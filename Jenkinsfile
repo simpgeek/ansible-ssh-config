@@ -17,5 +17,10 @@ ls -al .'''
         }
       }
     }
+    stage('deploy') {
+      steps {
+        echo 'deploy'
+      }
+    }
   }
 }
